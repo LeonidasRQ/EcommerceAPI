@@ -3,6 +3,7 @@ const faker = require('faker');
 class UsersService {
   constructor() {
     this.users = [];
+    this.generate();
   }
 
   generate() {
