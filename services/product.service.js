@@ -1,11 +1,9 @@
-const boom = require('@hapi/boom');
-
 const sequelize = require('../libs/sequelize');
 
 class ProductsService {
   constructor() {}
 
-  async create(data) {}
+  async create() {}
 
   async find() {
     const query = 'SELECT * FROM tasks';
@@ -13,11 +11,11 @@ class ProductsService {
     return data;
   }
 
-  async findOne(id) {}
+  async findOne() {}
 
-  async update(id, changes) {}
+  async update() {}
 
-  async delete(id) {}
+  async delete() {}
 }
 
 module.exports = ProductsService;
