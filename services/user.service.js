@@ -1,34 +1,26 @@
-const faker = require('faker');
+const pool = require('../libs/postgres.pool');
 
-class UsersService {
+class UserService {
   constructor() {
-    this.users = [];
-    this.generate();
-  }
-
-  generate() {
-    const limit = 10;
-    for (let i = 0; i < limit; i++) {
-      this.users.push({
-        id: faker.datatype.uuid(),
-        name: faker.name.firstName(),
-      });
-    }
+    this.pool = pool;
+    this.pool.on('error', (err) => {
+      console.log(err);
+    });
   }
 
   create() {}
 
-  find() {
-    return this.users;
+  async find() {
+    const query = 'SELECT * FROM tasks';
+    const rta = await this.pool.query(query);
+    return rta.rows;
   }
 
-  findOne(id) {
-    return this.users.find((item) => item.id == id);
-  }
+  findOne(id) {}
 
   update() {}
 
   delete() {}
 }
 
-module.exports = UsersService;
+module.exports = UserService;
